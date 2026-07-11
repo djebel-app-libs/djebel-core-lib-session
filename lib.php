@@ -7,11 +7,9 @@ description: Session + CSRF helper (Dj_App_Core_Lib_Session) — a hardened, per
 min_php_ver: 7.4
 */
 
-// A lazy library (loaded on demand via Dj_App_Plugins::loadLib), NOT a plugin — it registers
-// no hooks. A consumer loads it and starts the session before any output (djebel buffers the
-// whole page, so start-at-render still sets the cookie in time). Singleton — grab the instance,
-// then call instance methods:
-//   Dj_App_Plugins::loadLib('djebel-core-lib-session');
+// Not a plugin — it registers no hooks. A consumer starts the session before any output (djebel
+// buffers the whole page, so start-at-render still sets the cookie in time). Singleton — grab the
+// instance, then call instance methods:
 //   $session_obj = Dj_App_Core_Lib_Session::getInstance();
 //   $session_obj->set('my_plugin', 'user_id', 42);  $token = $session_obj->getCsrfToken();
 // All reads/writes are NAMESPACED under $_SESSION[<namespace>] — never the $_SESSION root. No
